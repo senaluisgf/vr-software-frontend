@@ -9,11 +9,11 @@ import { CoursesService } from '../services/courses.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  courses: Observable< Course[]>;
-  displayedColumns = ['id', 'name', 'courseProgram'];
+  courses$: Observable< Course[]>;
+  displayedColumns = ['id', 'description', 'courseProgram'];
 
   constructor(private service: CoursesService){
-    this.courses = this.service.loadCourses()
+    this.courses$ = this.service.loadCourses()
   }
 
 
