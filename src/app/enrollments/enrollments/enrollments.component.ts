@@ -3,7 +3,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Course } from 'src/app/courses/models/course';
+import { CoursesService } from 'src/app/courses/services/courses.service';
 import { Student } from 'src/app/students/models/student';
+import { StudentsService } from 'src/app/students/services/students.service';
 import { Enrollment } from '../models/enrollment';
 import { EnrollmentsService } from '../services/enrollments.service';
 
@@ -14,12 +16,14 @@ import { EnrollmentsService } from '../services/enrollments.service';
 })
 export class EnrollmentsComponent implements OnInit {
   enrollments$: Observable<Enrollment[]> | null= null;
-  students$: Observable<Student[]> | null= null;
-  courses$: Observable<Course[]> | null= null;
+  students: Student[] = [];
+  courses: Course[] = [];
   displayedColumns = ['id', 'student', 'course', 'actions'];
 
   constructor(
     private service: EnrollmentsService,
+    private readonly studentsService: StudentsService,
+    private readonly coursesService: CoursesService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
@@ -35,9 +39,19 @@ export class EnrollmentsComponent implements OnInit {
           return of([])
         })
       )
+      this.coursesService.loadCourses()
+      .subscribe(
+        (data) => this.courses = data,
+        error => this.onError('Não foi possível carregar os cursos')
+      );
+    this.studentsService.loadStudents()
+      .subscribe(
+        (data) => this.students = data,
+        error => this.onError('Não foi possível carregar os alunos')
+      );
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onError(message: string) {
     this.snackBar.open(
@@ -67,5 +81,14 @@ export class EnrollmentsComponent implements OnInit {
         this.onError('Erro ao remover matrícula')
       }, error => this.onError('Erro ao remover matrícula')
       );
+  }
+
+  studentName(studentId: number) {
+    const student = this.students.find(s => s.id === studentId);
+    return student?.name;
+  }
+  courseName(courseId: number) {
+    const course = this.courses.find(c => c.id === courseId);
+    return course?.description;
   }
 }
