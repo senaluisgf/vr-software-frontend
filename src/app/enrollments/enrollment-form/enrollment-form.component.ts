@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Course } from 'src/app/courses/models/course';
+import { CoursesService } from 'src/app/courses/services/courses.service';
+import { Student } from 'src/app/students/models/student';
+import { StudentsService } from 'src/app/students/services/students.service';
 import { Enrollment } from '../models/enrollment';
 import { EnrollmentsService } from '../services/enrollments.service';
 
@@ -12,6 +16,8 @@ import { EnrollmentsService } from '../services/enrollments.service';
   styleUrls: ['./enrollment-form.component.css']
 })
 export class EnrollmentFormComponent implements OnInit {
+  courses: Course[] = [];
+  students: Student[] = [];
   form: FormGroup = this.formBuilder.group({
     id: [0],
     studentId: [0],
@@ -23,6 +29,8 @@ export class EnrollmentFormComponent implements OnInit {
     private readonly service: EnrollmentsService,
     private snackBar: MatSnackBar,
     private readonly route: ActivatedRoute,
+    private readonly coursesService: CoursesService,
+    private readonly studentsService: StudentsService,
     ) {}
 
   ngOnInit(): void {
@@ -32,10 +40,25 @@ export class EnrollmentFormComponent implements OnInit {
       studentId: enrollment.studentId,
       courseId: enrollment.courseId,
     });
+    this.coursesService.loadCourses()
+      .subscribe(
+        (data) => this.courses = data,
+        error => this.onError()
+      );
+    this.studentsService.loadStudents()
+      .subscribe(
+        (data) => this.students = data,
+        error => this.onError()
+      );
   }
 
   onSubmit() {
-    this.service.save(this.form.value)
+    const { studentId, courseId} = this.form.value
+    this.service.save({
+      id: 0,
+      studentId: Number(studentId),
+      courseId: Number(courseId)
+    })
       .subscribe((data) => {
         if (data) {
           this.onSuccess()
@@ -43,7 +66,6 @@ export class EnrollmentFormComponent implements OnInit {
         }
         this.onError()
       }, error => this.onError());
-
   }
   onCancel() {
     this.location.back()

@@ -7,12 +7,20 @@
     <form [formGroup]="form" >
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Aluno</mat-label>
-        <input matInput formControlName="studentId">
+        <mat-select formControlName="studentId">
+          <ng-container *ngFor="let student of students">
+            <mat-option value={{student.id}}>{{student.name}}</mat-option>
+          </ng-container>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field class="example-full-width full-width">
         <mat-label>Curso</mat-label>
-        <textarea matInput placeholder="Formar ..." formControlName="courseId"></textarea>
+        <mat-select formControlName="courseId">
+          <ng-container *ngFor="let course of courses">
+            <mat-option value={{course.id}}>{{course.description}}</mat-option>
+          </ng-container>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>

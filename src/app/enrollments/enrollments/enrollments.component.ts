@@ -51,7 +51,6 @@ export class EnrollmentsComponent implements OnInit {
   }
 
   onAdd() {
-    console.log(this.route)
     this.router.navigate(['new'], {relativeTo: this.route})
   }
   onEdit(enrollment: Enrollment) {
