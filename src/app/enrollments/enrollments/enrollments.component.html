@@ -1,0 +1,60 @@
+<mat-card>
+  <div *ngIf="enrollments$ | async as enrollments; else loading">
+    <mat-card-content>
+      <mat-toolbar color="primary">
+        <span>Matrículas Realizadas</span>
+      </mat-toolbar>
+      <table mat-table [dataSource]="enrollments" class="mat-elevation-z8">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let enrollment">{{enrollment.id}}</td>
+        </ng-container>
+
+        <!-- Student Column -->
+        <ng-container matColumnDef="student">
+          <th mat-header-cell *matHeaderCellDef>Aluno</th>
+          <td mat-cell *matCellDef="let enrollment">{{enrollment.studentId}}</td>
+        </ng-container>
+
+        <!-- Course Column -->
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef>Curso</th>
+          <td mat-cell *matCellDef="let enrollment">{{enrollment.courseId}}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button
+              mat-mini-fab color="primary"
+              aria-label="Realizar uma Matrícula"
+              (click)="onAdd()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let enrollment">
+            <button
+              mat-icon-button
+              color="warn"
+              aria-label="Remover curso"
+              (click)="onDelete(enrollment)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</mat-card>
