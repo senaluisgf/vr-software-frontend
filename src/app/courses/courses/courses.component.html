@@ -34,12 +34,12 @@
               <mat-icon>add</mat-icon>
             </button>
           </mat-header-cell>
-          <mat-cell *matCellDef>
+          <mat-cell *matCellDef="let course">
             <button
               mat-icon-button
               color="primary"
               aria-label="Editar curso"
-              (click)="onEdit()"
+              (click)="onEdit(course)"
             >
               <mat-icon>edit</mat-icon>
             </button>

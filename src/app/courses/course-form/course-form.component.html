@@ -1,6 +1,6 @@
 <mat-card class="min-width">
   <mat-card-header>
-    <mat-toolbar color="primary">Adicionar um Curso</mat-toolbar>
+    <mat-toolbar color="primary">Detalhes do Curso</mat-toolbar>
   </mat-card-header>
 
   <mat-card-content>
@@ -10,9 +10,9 @@
         <input matInput formControlName="description">
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field class="example-full-width full-width">
         <mat-label>Ementa</mat-label>
-        <input matInput formControlName="courseProgram">
+        <textarea matInput placeholder="Formar ..." formControlName="courseProgram"></textarea>
       </mat-form-field>
     </form>
   </mat-card-content>

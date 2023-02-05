@@ -13,4 +13,12 @@ export class CoursesService {
   loadCourses() {
     return this.httpClient.get<Course[]>(this.API)
   }
+
+  loadById(id: number) {
+    return this.httpClient.get<Course>(`${this.API}/${id}`)
+  }
+
+  save(course: Course) {
+    return this.httpClient.post<Course>(this.API, course)
+  }
 }
