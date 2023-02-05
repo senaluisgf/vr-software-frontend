@@ -19,6 +19,19 @@ export class CoursesService {
   }
 
   save(course: Course) {
-    return this.httpClient.post<Course>(this.API, course)
+    if (!course.id) {
+      return this.create(course);
+    }
+    return this.update(course);
+  }
+  private create(course: Course) {
+    return this.httpClient.post<Course>(this.API, course);
+  }
+  private update(course: Course) {
+    return this.httpClient.put<Course>(`${this.API}/${course.id}`, course);
+  }
+
+  remove(course: Course) {
+    return this.httpClient.delete<boolean>(`${this.API}/${course.id}`)
   }
 }
