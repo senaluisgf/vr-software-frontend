@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'VR Software College';
   constructor(private readonly router: Router) {}
 
   toCourses() {
