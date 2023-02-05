@@ -42,6 +42,13 @@ export class CoursesComponent implements OnInit {
       { duration: 5000, verticalPosition: 'top', horizontalPosition: 'center' }
     )
   }
+  onSucess(message: string) {
+    this.snackBar.open(
+      message,
+      'x',
+      { duration: 5000}
+    )
+  }
 
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route})
@@ -51,9 +58,13 @@ export class CoursesComponent implements OnInit {
   }
   onDelete(course: Course) {
     this.service.remove(course)
-      .subscribe(() => {
+      .subscribe((data) => {
         this.refresh();
-        this.onError('Curso removido com sucesso')
+        if (data) {
+          this.onSucess('Curso removido com sucesso')
+          return
+        }
+        this.onError('Não foi possível remover curso')
       });
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
+import { Course } from 'src/app/courses/models/course';
+import { Student } from 'src/app/students/models/student';
 import { Enrollment } from '../models/enrollment';
 import { EnrollmentsService } from '../services/enrollments.service';
 
@@ -12,6 +14,8 @@ import { EnrollmentsService } from '../services/enrollments.service';
 })
 export class EnrollmentsComponent implements OnInit {
   enrollments$: Observable<Enrollment[]> | null= null;
+  students$: Observable<Student[]> | null= null;
+  courses$: Observable<Course[]> | null= null;
   displayedColumns = ['id', 'student', 'course', 'actions'];
 
   constructor(

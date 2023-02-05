@@ -42,6 +42,13 @@ export class StudentsComponent implements OnInit {
       { duration: 5000, verticalPosition: 'top', horizontalPosition: 'center' }
     )
   }
+  onSuccess(message: string) {
+    this.snackBar.open(
+      message,
+      'x',
+      { duration: 5000}
+    )
+  }
 
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route})
@@ -51,9 +58,13 @@ export class StudentsComponent implements OnInit {
   }
   onDelete(student: Student) {
     this.service.remove(student)
-      .subscribe(() => {
+      .subscribe((data) => {
         this.refresh();
-        this.onError('Aluno removido com sucesso')
+        if (data) {
+          this.onSuccess('Aluno removido com sucesso');
+          return;
+        }
+        this.onError('Não foi possível remover o aluno')
       });
   }
 }

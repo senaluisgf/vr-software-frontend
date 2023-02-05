@@ -1,5 +1,14 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="cabecalho-app">
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="toCourses()">Cursos</button>
+      <button mat-menu-item (click)="toStudents()">Alunos</button>
+      <button mat-menu-item (click)="toEnrollments()">Matrículas</button>
+    </mat-menu>
+  </div>
   <span>VR Software College</span>
 </mat-toolbar>
-<!-- Colocar um menu Aqui -->
 <router-outlet></router-outlet>

@@ -36,7 +36,14 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     this.service.save(this.form.value)
-      .subscribe(() => this.onSuccess(), error => this.onError());
+      .subscribe((data) => {
+        console.log(data)
+        if (data) {
+          this.onSuccess()
+          return
+        }
+        this.onError()
+      }, error => this.onError());
 
   }
   onCancel() {
@@ -49,6 +56,6 @@ export class CourseFormComponent implements OnInit {
   }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar curso', 'x', { duration: 5000 });
+    this.snackBar.open('Não foi possível salvar o curso', 'x', { duration: 5000 });
   }
 }
