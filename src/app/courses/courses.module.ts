@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { CourseFormComponent } from './course-form/course-form.component';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses/courses.component';
-import { CourseFormComponent } from './course-form/course-form.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CourseFormComponent } from './course-form/course-form.component';
   imports: [
     CommonModule,
     CoursesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CoursesModule { }
