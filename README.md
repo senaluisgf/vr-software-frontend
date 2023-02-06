@@ -1,9 +1,5 @@
 <!-- # Programming Challenge -->
-
-<p align="center">
-  <a href="https://angular.io/" target="blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" width="100" alt="Angular Logo" /></a>
-</p>
-## Documentação
+## Desafio VR Software - Frontend
 
 ---
 ### Inicialização da Aplicação
@@ -12,6 +8,7 @@
 1. clone o repositório.
 - 2. Caso tenha o docker instalado em sua máquina
   2.1 basta executar o comando ```docker-compose up -d```.
+
 - 2. Caso não possui o docker instalado
     2.1 Execute o comando ```npm install```.
     2.2 Após a instalação dos pacotes, execute o comando ```npm start```.
