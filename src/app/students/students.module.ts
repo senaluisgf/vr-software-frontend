@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsComponent } from './students/students.component';
@@ -18,6 +19,7 @@ import { StudentsComponent } from './students/students.component';
     StudentsRoutingModule,
     AppMaterialModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class StudentsModule { }

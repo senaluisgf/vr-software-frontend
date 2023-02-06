@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { Student } from '../models/student';
 import { StudentsService } from '../services/students.service';
 
@@ -19,6 +21,7 @@ export class StudentsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
+    private readonly dialog: MatDialog,
     ) {
     this.refresh()
   }
@@ -57,14 +60,22 @@ export class StudentsComponent implements OnInit {
     this.router.navigate([student.id], {relativeTo: this.route })
   }
   onDelete(student: Student) {
-    this.service.remove(student)
-      .subscribe((data) => {
-        this.refresh();
-        if (data) {
-          this.onSuccess('Aluno removido com sucesso');
-          return;
-        }
-        this.onError('Não foi possível remover o aluno')
-      });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: "Deseja remover este aluno?",
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.service.remove(student)
+          .subscribe((data) => {
+            this.refresh();
+            if (data) {
+              this.onSuccess('Aluno removido com sucesso');
+              return;
+            }
+            this.onError('Não foi possível remover o aluno')
+          });
+      }
+    });
   }
 }
