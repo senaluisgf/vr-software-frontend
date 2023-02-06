@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Course } from 'src/app/courses/models/course';
 import { CoursesService } from 'src/app/courses/services/courses.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { Student } from 'src/app/students/models/student';
 import { StudentsService } from 'src/app/students/services/students.service';
 import { Enrollment } from '../models/enrollment';
@@ -27,6 +29,7 @@ export class EnrollmentsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     ) {
     this.refresh()
   }
@@ -71,16 +74,24 @@ export class EnrollmentsComponent implements OnInit {
     this.router.navigate([enrollment.id], {relativeTo: this.route })
   }
   onDelete(enrollment: Enrollment) {
-    this.service.remove(enrollment)
-      .subscribe((data) => {
-        this.refresh();
-        if (data) {
-          this.onSuccess('Matricula removida com sucesso')
-          return
-        }
-        this.onError('Erro ao remover matrícula')
-      }, error => this.onError('Erro ao remover matrícula')
-      );
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: "Deseja remover esta matrícula?",
+    });
+
+    dialogRef.afterClosed().subscribe((result:boolean) => {
+      if (result) {
+        this.service.remove(enrollment)
+          .subscribe((data) => {
+            this.refresh();
+            if (data) {
+              this.onSuccess('Matricula removida com sucesso')
+              return
+            }
+            this.onError('Erro ao remover matrícula')
+          }, error => this.onError('Erro ao remover matrícula')
+          );
+      }
+    });
   }
 
   studentName(studentId: number) {
