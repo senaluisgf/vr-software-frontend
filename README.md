@@ -5,12 +5,12 @@
 ### Inicialização da Aplicação
 #### Instalação de dependências
 
-1. clone o repositório.
-2. Caso tenha o docker instalado em sua máquina
+1. clone o repositório;
+2. Caso tenha o docker instalado em sua máquina;
   2.1 basta executar o comando ```docker-compose up -d```.
 
-3. Caso não possui o docker instalado
-    3.1 Execute o comando ```npm install```.
+3. Caso não possui o docker instalado;
+    3.1 Execute o comando ```npm install```;
     3.2 Após a instalação dos pacotes, execute o comando ```npm start```.
 ---
 ### Executação da Aplicação
@@ -25,14 +25,14 @@ Apesar de não conhecer muito das boas práticas do Angular/frontend, gosto muit
 - **Docker + Nginx** - Ainda não havia tido a oportunidade de utilizar o nginx, tive algumas dificuldades de fazer a imagem funcionar da maneira esperada, mas o problema foi solucionado com sucesso
 
 #### Telas Desenvolvidas
-- **Listagem de cursos** - *GET http://localhost:4200/courses*
-- **Criação de cursos** - *POST http://localhost:4200/courses*
-- **Edição de cursos** - *PUT http://localhost:4200/courses/1*
+- **Listagem de cursos** - *http://localhost:4200/courses*
+- **Criação de cursos** - *http://localhost:4200/courses/new*
+- **Edição de cursos** - *http://localhost:4200/courses/1*
 
-- **Listagem de alunos** - *GET http://localhost:4200/students*
-- **Criação de alunos** - *POST http://localhost:4200/students*
-- **Edição de alunos** - *PUT http://localhost:4200/students/1*
+- **Listagem de alunos** - *http://localhost:4200/students*
+- **Criação de alunos** - *http://localhost:4200/students/new*
+- **Edição de alunos** - *http://localhost:4200/students/1*
 
-- **Listagem de matrículas** - *GET http://localhost:4200/enrollments*
-- **Criação de matrículas** - *POST http://localhost:4200/enrollments*
-- **Edição de matrículas** - *PUT http://localhost:4200/enrollments/1*
+- **Listagem de matrículas** - *http://localhost:4200/enrollments*
+- **Criação de matrículas** - *http://localhost:4200/enrollments/new*
+- **Edição de matrículas** - *http://localhost:4200/enrollments/1*
