@@ -9,9 +9,9 @@
 2. Caso tenha o docker instalado em sua máquina
   2.1 basta executar o comando ```docker-compose up -d```.
 
-2. Caso não possui o docker instalado
-    2.1 Execute o comando ```npm install```.
-    2.2 Após a instalação dos pacotes, execute o comando ```npm start```.
+3. Caso não possui o docker instalado
+    3.1 Execute o comando ```npm install```.
+    3.2 Após a instalação dos pacotes, execute o comando ```npm start```.
 ---
 ### Executação da Aplicação
 Importante que a api backend esteja sendo executada em _localhost:3000_
