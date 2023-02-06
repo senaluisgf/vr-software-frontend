@@ -4,6 +4,7 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses/courses.component';
@@ -18,7 +19,8 @@ import { CoursesComponent } from './courses/courses.component';
     CommonModule,
     CoursesRoutingModule,
     AppMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class CoursesModule { }
