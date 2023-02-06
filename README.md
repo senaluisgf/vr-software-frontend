@@ -1,27 +1,41 @@
-# Frontend
+<!-- # Programming Challenge -->
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+<p align="center">
+  <a href="https://angular.io/" target="blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" width="100" alt="Angular Logo" /></a>
+</p>
+## Documentação
 
-## Development server
+---
+### Inicialização da Aplicação
+#### Instalação de dependências
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. clone o repositório.
+- 2. Caso tenha o docker instalado em sua máquina
+  2.1 basta executar o comando ```docker-compose up -d```.
+- 2. Caso não possui o docker instalado
+    2.1 Execute o comando ```npm install```.
+    2.2 Após a instalação dos pacotes, execute o comando ```npm start```.
+---
+### Executação da Aplicação
+Importante que a api backend esteja sendo executada em _localhost:3000_
+1. Para iniciar a aplicação, basta executar o comando ```docker-compose up -d``` ou ```npm start```.
+1. Abrir seu navegador e acessar a [página inicial da aplicação](http://localhost:4200) (http://localhost:4200)
+---
+#### Desafios encontrados durante a realização do desafio
+- **Angular** - utilizar um framework que não possuo tanta afinidade e não estudava há algum tempo foi bem desafiador. Mas como todo programador que almeja sucesso em sua carreira, decidi encarar o desafio e confesso que estou satisfeito com meu desempenho.
+Apesar de não conhecer muito das boas práticas do Angular/frontend, gosto muito de estudar e foi uma experiência muito interessante estudar ao mesmo tempo que aplicava em algo concetro o que eu havia estudado
 
-## Code scaffolding
+- **Docker + Nginx** - Ainda não havia tido a oportunidade de utilizar o nginx, tive algumas dificuldades de fazer a imagem funcionar da maneira esperada, mas o problema foi solucionado com sucesso
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Telas Desenvolvidas
+- **Listagem de cursos** - *GET http://localhost:4200/courses*
+- **Criação de cursos** - *POST http://localhost:4200/courses*
+- **Edição de cursos** - *PUT http://localhost:4200/courses/1*
 
-## Build
+- **Listagem de alunos** - *GET http://localhost:4200/students*
+- **Criação de alunos** - *POST http://localhost:4200/students*
+- **Edição de alunos** - *PUT http://localhost:4200/students/1*
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Listagem de matrículas** - *GET http://localhost:4200/enrollments*
+- **Criação de matrículas** - *POST http://localhost:4200/enrollments*
+- **Edição de matrículas** - *PUT http://localhost:4200/enrollments/1*
